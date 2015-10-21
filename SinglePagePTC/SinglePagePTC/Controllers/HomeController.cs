@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SinglePage.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,9 @@ namespace SinglePagePTC.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            TrainingProductManager mgr = new TrainingProductManager();
+
+            return View(mgr.Get());
         }
 
         public ActionResult About()
