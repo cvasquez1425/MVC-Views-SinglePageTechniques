@@ -9,12 +9,17 @@ namespace SinglePage.Entities
     public class TrainingProductManager
     {
 
-        public List<TrainingProduct> Get()
+        public List<TrainingProduct> Get(TrainingProduct entity)
         {
             List<TrainingProduct> ret = new List<TrainingProduct>();
 
             // TODO: Add your data access method here.
             ret = CreateMockData();
+
+            if (!string.IsNullOrEmpty(entity.ProductName))
+            {
+                ret = ret.FindAll(p => p.ProductName.ToLower().StartsWith(entity.ProductName, StringComparison.CurrentCultureIgnoreCase));
+            }
 
             return ret;
         }

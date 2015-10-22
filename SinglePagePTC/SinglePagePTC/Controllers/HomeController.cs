@@ -11,23 +11,27 @@ namespace SinglePagePTC.Controllers
     {
         public ActionResult Index()
         {
-            TrainingProductManager mgr = new TrainingProductManager();
+            //            TrainingProductManager mgr = new TrainingProductManager();  // to reduce code in the controller, we'll use the MVVM pattern by using TrainingProductViewModel instead.
+            TrainingProductViewModel vm = new TrainingProductViewModel();
 
-            return View(mgr.Get());
+            // vm.Get(); // call the Get method on that view model to populate the Products collection
+            // After implementing HandleRequest
+            vm.HandleRequest();
+
+            //            return View(mgr.Get());
+            return View(vm);  // passing the whole view model, because we're going to pass additional properties that the view can use.
         }
 
-        public ActionResult About()
+        [HttpPost]
+        public ActionResult Index(TrainingProductViewModel vm)
         {
-            ViewBag.Message = "Your application description page.";
+            vm.HandleRequest();
 
-            return View();
+            ModelState.Clear();
+
+            return View(vm);
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
     }
 }
