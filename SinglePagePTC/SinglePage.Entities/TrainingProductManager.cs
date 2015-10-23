@@ -8,6 +8,40 @@ namespace SinglePage.Entities
 {
     public class TrainingProductManager
     {
+        public TrainingProductManager()
+        {
+            ValidationErrors = new List<KeyValuePair<string, string>>();
+        }
+
+        public bool Validate(TrainingProduct entity)
+        {
+            ValidationErrors.Clear();
+            if (!string.IsNullOrEmpty(entity.ProductName))
+            {
+                // Check for lower case
+                if (entity.ProductName.ToLower() == entity.ProductName)
+                {
+                    ValidationErrors.Add(new KeyValuePair<string, string>("ProductName", "Product Name must not be all lowe case."));  // Business Rule failed.
+                }
+            }
+
+            return (ValidationErrors.Count == 0); // return True or False
+        }
+
+        public bool Insert(TrainingProduct entity)
+        {
+            bool ret = false;
+
+            ret = Validate(entity);
+            if (ret)
+            {
+                //TODO: Create INSERT code here 
+            }
+
+            return ret;
+        }
+
+        public List<KeyValuePair<string, string>> ValidationErrors {get; set;}
 
         public List<TrainingProduct> Get(TrainingProduct entity)
         {
