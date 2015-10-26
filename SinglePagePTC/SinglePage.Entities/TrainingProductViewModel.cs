@@ -78,7 +78,7 @@ namespace SinglePage.Entities
 
             if (Mode == "Add")
             {
-                // Add data to databas here. If everything is valid as far as data annotations is concerned, then call our Manager.Insert
+                // Add data to databas here
                 mgr.Insert(Entity);
             }
 
