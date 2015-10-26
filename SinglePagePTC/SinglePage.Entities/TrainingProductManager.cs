@@ -28,6 +28,40 @@ namespace SinglePage.Entities
             return (ValidationErrors.Count == 0); // return True or False
         }
 
+        public bool Delete(TrainingProduct entity)  // I could have simply passed the ProductId here but I kinda like passing the whole entity
+        {
+            //TODO: Create DELETE code here
+
+            return true;
+        }
+
+        public TrainingProduct Get(int ProductId)
+        {
+            List<TrainingProduct> list = new List<TrainingProduct>();
+            TrainingProduct ret = new TrainingProduct();
+
+            // TODO: Call your data access method here
+            list = CreateMockData();
+
+            ret = list.Find(p => p.ProductId == ProductId);
+
+            return ret;
+        }
+
+        // UPDATE Method to database
+        public bool Update(TrainingProduct entity)
+        {
+            bool ret = false;
+
+            ret = Validate(entity);
+            if (ret)
+            {
+                // TODO: Create UPDATE Code here
+            }
+
+            return ret;
+        }
+
         public bool Insert(TrainingProduct entity)
         {
             bool ret = false;
