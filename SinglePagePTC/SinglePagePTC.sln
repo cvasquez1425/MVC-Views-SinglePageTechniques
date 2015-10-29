@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 14 for Web
+# Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SinglePagePTC", "SinglePagePTC\SinglePagePTC.csproj", "{72F667CD-8888-42FA-9031-87E128457527}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SinglePage.Entities", "SinglePage.Entities\SinglePage.Entities.csproj", "{720439DB-D5A5-4B3A-AFC4-09E5B200432C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SinglePagePTC.Common", "SinglePagePTC.Common\SinglePagePTC.Common.csproj", "{D9535A15-CAD1-4732-B317-5046A0A951D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{720439DB-D5A5-4B3A-AFC4-09E5B200432C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{720439DB-D5A5-4B3A-AFC4-09E5B200432C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{720439DB-D5A5-4B3A-AFC4-09E5B200432C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9535A15-CAD1-4732-B317-5046A0A951D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9535A15-CAD1-4732-B317-5046A0A951D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9535A15-CAD1-4732-B317-5046A0A951D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9535A15-CAD1-4732-B317-5046A0A951D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -179,6 +179,10 @@
       <Project>{720439db-d5a5-4b3a-afc4-09e5b200432c}</Project>
       <Name>SinglePage.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SinglePagePTC.Common\SinglePagePTC.Common.csproj">
+      <Project>{d9535a15-cad1-4732-b317-5046a0a951d6}</Project>
+      <Name>SinglePagePTC.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SinglePagePTC.Common;
+using System;
 using System.Collections.Generic;
 
 namespace SinglePage.Entities
@@ -6,41 +7,24 @@ namespace SinglePage.Entities
     /// <summary>
     /// View Model uses TrainingProductManager class for CRUD
     /// </summary>
-    public class TrainingProductViewModel
+    public class TrainingProductViewModel : ViewModelBase
     {
-        public TrainingProductViewModel()
+        public TrainingProductViewModel() : base()   // From the constructor in this view model called the constructor down in the view model base
         {
-            Init();
-            EventArgument = string.Empty;
 
-            Products     = new List<TrainingProduct>();
-            SearchEntity = new TrainingProduct();
-            Entity       = new TrainingProduct();
         }
 
         public TrainingProduct Entity         { get; set; }
-        public string EventCommand            { get; set; }
         public List<TrainingProduct> Products { get; set; }
         public TrainingProduct SearchEntity   { get; set; }
-        public bool   IsValid                 { get; set; }
-        public string Mode                    { get; set; }
-        public List<KeyValuePair<string, string>> ValidationErrors { get; set; }
 
-        // Primary Key holder
-        public string EventArgument { get; set; }
-
-        // Control Visibility
-        public bool IsDetailAreaVisible       { get; set; }
-        public bool IsListAreaVisible         { get; set; }
-        public bool IsSearchAreaVisible       { get; set; }
-
-        private void Init()
+        protected override void Init()
         {
-            EventCommand = "List";
+            Products = new List<TrainingProduct>();
+            SearchEntity = new TrainingProduct();
+            Entity = new TrainingProduct();
 
-            ValidationErrors = new List<KeyValuePair<string, string>>();
-
-            ListMode();
+            base.Init();
         }
 
         public void HandleRequest()
@@ -123,17 +107,6 @@ namespace SinglePage.Entities
             }
         }
 
-        private void ListMode()
-        {
-            IsValid = true;
-
-            IsListAreaVisible = true;
-            IsSearchAreaVisible = true;
-            IsDetailAreaVisible = false;
-
-            Mode = "List";
-        }
-
         private void Add()
         {
             IsValid = true;
@@ -193,7 +166,7 @@ namespace SinglePage.Entities
         }
 
         // with addition of the HandleRequest, this method no longer needed to be public
-        private void Get()
+        protected override void Get()
         {
             TrainingProductManager mgr = new TrainingProductManager();
             Products = mgr.Get(SearchEntity);
