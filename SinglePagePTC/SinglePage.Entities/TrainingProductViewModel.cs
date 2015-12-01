@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace SinglePage.Entities
 {
+    
     /// <summary>
     /// View Model uses TrainingProductManager class for CRUD
     /// </summary>
