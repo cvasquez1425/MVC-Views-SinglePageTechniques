@@ -42,6 +42,11 @@
                     <i class="glyphicon glyphicon-plus-sign"></i>
                     &nbsp;Add
                 </button>
+                <button id="btnCarlos" class="btn btn-sm btn-primary"
+                        data-pdsa-action="carlos">
+                    <i class="glyphicon glyphicon-align-justify"></i>
+                    &nbsp;Carlos
+                </button>
             </div>
         </div>
     }
@@ -73,42 +78,42 @@
                     </div>
                 </div>
                 <!-- END MESSAGE AREA -->
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Entity.ProductName, "Product Name")
-                        @Html.TextBoxFor(m => m.Entity.ProductName, new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Entity.IntroductionDate, "Introduction Date")
-                        @Html.TextBoxFor(m => m.Entity.IntroductionDate,
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Entity.ProductName, "Product Name")
+                    @Html.TextBoxFor(m => m.Entity.ProductName, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Entity.IntroductionDate, "Introduction Date")
+                    @Html.TextBoxFor(m => m.Entity.IntroductionDate,
                                     new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Entity.Url, "URL")
-                        @Html.TextBoxFor(m => m.Entity.Url,
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Entity.Url, "URL")
+                    @Html.TextBoxFor(m => m.Entity.Url,
                                     new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Entity.Price, "Price")
-                        @Html.TextBoxFor(m => m.Entity.Price,
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Entity.Price, "Price")
+                    @Html.TextBoxFor(m => m.Entity.Price,
                                     new { @class = "form-control" })
-                    </div>
-                    <div class="panel-footer">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <button id="btnSave" class="btn btn-sm btn-primary"
-                                        data-pdsa-action="save">
-                                    <i class="glyphicon glyphicon-floppy-disk"></i>
-                                    &nbsp;Save
-                                </button>
-                                <button id="btnCancel" class="btn btn-sm btn-primary"
-                                        formnovalidate="formnovalidate"
-                                        data-pdsa-action="cancel">
-                                    <i class="glyphicon glyphicon-remove-circle"></i>
-                                    &nbsp;Cancel
-                                </button>
-                            </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button id="btnSave" class="btn btn-sm btn-primary"
+                                    data-pdsa-action="save">
+                                <i class="glyphicon glyphicon-floppy-disk"></i>
+                                &nbsp;Save
+                            </button>
+                            <button id="btnCancel" class="btn btn-sm btn-primary"
+                                    formnovalidate="formnovalidate"
+                                    data-pdsa-action="cancel">
+                                <i class="glyphicon glyphicon-remove-circle"></i>
+                                &nbsp;Cancel
+                            </button>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     }
@@ -135,7 +140,7 @@
                         <tr>
                             <td class="pdsa-action-button-column">
                                 <a href="#" data-pdsa-action="edit"
-                                   data-pdsa-val="@item.ProductId"               @*it'll take the ProductId and put into that property or data-*@
+                                   data-pdsa-val="@item.ProductId" @*it'll take the ProductId and put into that property or data-*@
                                    class="btn btn-default btn-sm">
                                     <i class="glyphicon glyphicon-edit"></i>
                                 </a>
@@ -146,7 +151,7 @@
                             <td>@item.Price.ToString("c")</td>
                             <td class="pdsa-action-button-column">
                                 <a href="#" data-pdsa-action="delete"
-                                   data-pdsa-val="@item.ProductId"              @*it'll take the ProductId and put into that property or data-*@
+                                   data-pdsa-val="@item.ProductId" @*it'll take the ProductId and put into that property or data-*@
                                    onclick="return confirm('Delete this Product?');"
                                    class="btn btn-default btn-sm">
                                     <i class="glyphicon glyphicon-trash"></i>

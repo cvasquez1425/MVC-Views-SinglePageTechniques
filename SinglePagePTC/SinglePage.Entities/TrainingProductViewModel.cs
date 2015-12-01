@@ -19,6 +19,19 @@ namespace SinglePage.Entities
         public List<TrainingProduct> Products { get; set; }
         public TrainingProduct SearchEntity   { get; set; }
 
+        public override void HandleRequest()
+        {
+            switch(EventCommand.ToLower())      //Additional functinality due to overriding this method from the Base class. if it doesn't fall thru, it goes to the HandleRequest down there.
+            {
+                case "carlos":                   // Additional buttons into our model.
+                    break;
+
+                default:
+                    break;
+            }
+            base.HandleRequest();
+        }
+
         protected override void Init()
         {
             Products = new List<TrainingProduct>();
@@ -28,54 +41,7 @@ namespace SinglePage.Entities
             base.Init();
         }
 
-        public void HandleRequest()
-        {
-            switch (EventCommand.ToLower())
-            {
-                case "list":
-                case "search":
-                    Get();
-                    break;
-
-                case "save":
-                    Save();
-                    if (IsValid)
-                    {
-                        Get();
-                    }
-                    break;
-
-                case "edit":
-                    //System.Diagnostics.Debugger.Break();  // stop and take a look at things.
-                    IsValid = true;
-                    Edit();
-                    break;
-
-                case "delete":
-                    ResetSearch();
-                    Delete();
-                    break;
-
-                case "cancel":
-                    ListMode();
-                    Get();
-                    break;
-
-                case "resetsearch":
-                    ResetSearch();
-                    Get();
-                    break;
-
-                case "add":
-                    Add();
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
-        private void Save()
+        protected override void Save()
         {
             TrainingProductManager mgr = new TrainingProductManager();
 
@@ -90,25 +56,11 @@ namespace SinglePage.Entities
             }
 
             ValidationErrors = mgr.ValidationErrors;
-            if (ValidationErrors.Count > 0)
-            {
-                IsValid = false;
-            }
 
-            if (!IsValid)
-            {
-                if (Mode == "Add")
-                {
-                    AddMode();
-                }
-                else
-                {
-                    EditMode();
-                }
-            }
+            base.Save();
         }
 
-        private void Add()
+        protected override void Add()
         {
             IsValid = true;
 
@@ -117,21 +69,23 @@ namespace SinglePage.Entities
             Entity.Url = "http://";
             Entity.Price = 0;
 
-            AddMode();
+            //AddMode();
+            base.Add();
 
         }
 
-        private void Edit()
+        protected override void Edit()
         {
             TrainingProductManager mgr = new TrainingProductManager();
 
             // we're going to set the entity/member variable to hold the current product, this is the one we're going to bind to the input area, input form for the user.
             Entity = mgr.Get(Convert.ToInt32(EventArgument));
 
-            EditMode();
+            //EditMode();
+            base.EditMode();
         }
 
-        private void Delete()
+        protected override void Delete()
         {
             TrainingProductManager mgr = new TrainingProductManager();
             Entity = new TrainingProduct();
@@ -140,30 +94,15 @@ namespace SinglePage.Entities
             mgr.Delete(Entity);
             Get();
 
-            ListMode();
+            //ListMode();
+            base.Delete();
         }
 
-        private void AddMode()
-        {
-            IsListAreaVisible   = false;
-            IsSearchAreaVisible = false;
-            IsDetailAreaVisible = true;
-
-            Mode = "Add";
-        }
-
-        private void EditMode()
-        {
-            IsListAreaVisible   = false;
-            IsSearchAreaVisible = false;
-            IsDetailAreaVisible = true;
-
-            Mode = "Edit";
-        }
-
-        private void ResetSearch()
+        protected override void ResetSearch()
         {
             SearchEntity = new TrainingProduct();
+
+            base.ResetSearch();
         }
 
         // with addition of the HandleRequest, this method no longer needed to be public
@@ -171,6 +110,8 @@ namespace SinglePage.Entities
         {
             TrainingProductManager mgr = new TrainingProductManager();
             Products = mgr.Get(SearchEntity);
+
+            base.Get();
         }
 
     }
